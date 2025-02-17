@@ -17,3 +17,18 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+tasks.named('test') {
+    useJUnitPlatform()  // Required for JUnit 5
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+    }
+}
+
+tasks.named('test') {
+    reports {
+        junitXml.required.set(true)
+        html.required.set(true)
+    }
+}
+
